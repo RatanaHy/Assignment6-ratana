@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body onresize="resize()">
+	<h2>Assignment#6</h2>
+	<h5>Task#1:Show width and height; current location, and reload button</h5>
+	<p style=" font-synthesis: Times"><i>The width and height should dynamically changed when you resize the window</i></p>
+	<div id="width"> Width</div><br>
+	<div id="height"> Height</div><br>
+	<div id ="currentLocation"></div>
+	<br>
+	<button id="reload">Reload Page</button><br />
+	
+	<hr>
+	<p id ="p1">P1 with an ID</p>
+	<p id = "p2">P2 with an ID</p>
+	<p id ="p3">P3 with an ID</p>
+	<p id ="p4"></p>
+	<button onclick="changeColor()">Change to yellow collor of the third p Tag</button>
+	<button onclick ="append()">Append Hello word under P3</button> <br>
+	<button onclick ="showHide()">Show/Hide P2</button>
+	<hr>
+	<h2>Tast#3 Mouse and Click Event</h2>
+	<p><i>Show "On Mouse Over" when i mouse over the link; Show "On Mouse Out" when I mouse out the link;(do the same for mousedown and mouseup). When double click, show "On Double click"</i></p>
+	<a href="#" id="showEvent" onmousedown="mouseEventLog(event)" onmouseup="mouseEventLog(event)" ondblclick="mouseEventLog(event)" onmouseover="mouseEventLog(event)" onmouseout="mouseEventLog(event)">Show Event Here</a>
+
+	<script>
+		document.getElementById("width").innerHTML = "The width is " + window.outerWidth;
+		document.getElementById("height").innerHTML = "The height is "+ window.outerHeight;
+		
+		function resize(){
+			var width = window.outerWidth;
+			var height = window.outerHeight;
+		  	document.getElementById("width").innerHTML = "The width is" + width;
+			document.getElementById("height").innerHTML = "The height is "+ height;
+		};
+		document.getElementById("currentLocation").innerHTML = "Current location : " + window.location.href;
+
+		document.getElementById('reload').onclick = function(event) {
+			 window.location.reload(true);
+		}	
+
+		function changeColor(){
+			document.getElementById("p3").style.backgroundColor ="yellow";
+		}
+		var result ="";
+		function append(){
+			var str1 = "Hello World!";
+			this.result =	str1.concat (result);
+			document.getElementById("p4").innerHTML = result;
+		}
+		function showHide(){
+			var x = document.getElementById("p2");
+			if( x.style.display == "none"){
+				x.style.display = "block";
+			}else{
+				x.style.display = "none";
+			}
+		}
+		function mouseEventLog(event){
+			var showEvent = document.getElementById("showEvent");
+			// showEvent.innerHTML = event.type;
+			if(event.type == "mousedown"){
+				showEvent.innerHTML = "On Mouse Down";
+			}else if(event.type == "mouseup"){
+				showEvent.innerHTML = "On Mouse Up";
+			}else if(event.type == "mouseover"){
+				showEvent.innerHTML = "On Mouse Over";
+			}else if(event.type == "mouseout"){
+				showEvent.innerHTML = "On Mouse Out";
+			}else if(event.type == "dblclick"){
+				showEvent.innerHTML = "On Double Click";
+			}
+		}
+	</script>
+</body>
+</html>
